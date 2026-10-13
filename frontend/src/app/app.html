@@ -1,0 +1,49 @@
+<header class="barra">
+  <div class="contenedor">
+    <span class="marca">Biblioteca</span>
+    <span class="contador">{{ libros.length }} libros</span>
+  </div>
+</header>
+
+<main class="contenedor layout">
+  <!-- Columna izquierda: formulario -->
+  <section class="panel">
+    <h2>Agregar libro</h2>
+    <form (ngSubmit)="crearLibro()">
+      <label for="titulo">Título</label>
+      <input id="titulo" name="titulo" [(ngModel)]="titulo" placeholder="Ej. Don Quijote">
+
+      <label for="autor">Autor</label>
+      <input id="autor" name="autor" [(ngModel)]="autor" placeholder="Ej. Miguel de Cervantes">
+
+      <button class="btn btn-primario" type="submit">Crear libro</button>
+    </form>
+
+    @if (mensaje) {
+      <p class="aviso aviso-ok">{{ mensaje }}</p>
+    }
+    @if (error) {
+      <p class="aviso aviso-error">{{ error }}</p>
+    }
+  </section>
+
+  <!-- Columna derecha: lista de libros -->
+  <section>
+    <h2>Libros registrados</h2>
+
+    <div class="grilla">
+      @for (libro of libros; track libro.id) {
+        <article class="tarjeta">
+          <span class="id">ID {{ libro.id }}</span>
+          <h3>{{ libro.titulo }}</h3>
+          <p>{{ libro.autor }}</p>
+          <button class="btn btn-peligro" type="button" (click)="eliminarLibro(libro.id)">
+            Eliminar
+          </button>
+        </article>
+      } @empty {
+        <p class="vacio">No hay libros registrados.</p>
+      }
+    </div>
+  </section>
+</main>

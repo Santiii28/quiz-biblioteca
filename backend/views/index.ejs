@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biblioteca - EJS</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; background: #f4f1ea; color: #2b2622; }
+    .contenedor { max-width: 1000px; margin: 0 auto; padding: 40px 16px; }
+    h1 { margin: 0 0 4px; font-family: Georgia, serif; }
+    .sub { color: #6b625a; margin: 0 0 20px; }
+    .boton { display: inline-block; padding: 8px 16px; background: #2b2622; color: #fff; border-radius: 6px; text-decoration: none; margin-bottom: 24px; }
+    .grilla { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+    .tarjeta { background: #fff; border-radius: 8px; padding: 16px; border-left: 4px solid #8a3b2e; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+    .tarjeta h2 { font-size: 1.05rem; margin: 0 0 6px; font-family: Georgia, serif; }
+    .tarjeta p { margin: 0 0 10px; color: #6b625a; }
+    .id { font-size: .75rem; color: #8a817a; }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1>Biblioteca - Vista EJS</h1>
+    <p class="sub">Esta vista se renderiza en el servidor con Express + EJS.</p>
+    <a class="boton" href="/api-docs">Abrir Swagger</a>
+    <div class="grilla">
+      <% libros.forEach(libro => { %>
+        <div class="tarjeta">
+          <h2><%= libro.titulo %></h2>
+          <p><%= libro.autor %></p>
+          <span class="id">ID <%= libro.id %></span>
+        </div>
+      <% }) %>
+    </div>
+  </div>
+</body>
+</html>

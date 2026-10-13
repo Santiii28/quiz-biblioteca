@@ -1,0 +1,205 @@
+/* Estilos propios, sin framework de UI */
+
+:root {
+  --fondo: #f4f1ea;
+  --papel: #ffffff;
+  --tinta: #2b2622;
+  --tinta-suave: #6b625a;
+  --borde: #ddd5c8;
+  --acento: #8a3b2e;
+  --ok-fondo: #e6f2e6;
+  --ok-texto: #1f5b2a;
+  --error-fondo: #f8e3df;
+  --error-texto: #8a2a1c;
+  --radio: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fondo);
+  color: var(--tinta);
+}
+
+h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.3rem;
+  margin: 0 0 16px;
+}
+
+/* Contenedor centrado */
+.contenedor {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+/* Barra superior */
+.barra {
+  background: var(--tinta);
+  color: #fff;
+  padding: 14px 0;
+}
+
+.barra .contenedor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.marca {
+  font-family: Georgia, serif;
+  font-size: 1.3rem;
+}
+
+.contador {
+  font-size: 0.85rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* Layout de dos columnas: formulario | lista */
+.layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 32px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  align-items: start;
+}
+
+/* En pantallas pequeñas, una sola columna */
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Panel del formulario */
+.panel {
+  background: var(--papel);
+  border: 1px solid var(--borde);
+  border-radius: var(--radio);
+  padding: 20px;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-bottom: 16px;
+  font: inherit;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  background: #fff;
+}
+
+input:focus {
+  outline: 2px solid var(--acento);
+  outline-offset: 1px;
+  border-color: var(--acento);
+}
+
+/* Botones */
+.btn {
+  font: inherit;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.btn-primario {
+  width: 100%;
+  background: var(--tinta);
+  color: #fff;
+}
+
+.btn-primario:hover {
+  background: #000;
+}
+
+.btn-peligro {
+  background: transparent;
+  color: var(--error-texto);
+  border-color: var(--error-texto);
+}
+
+.btn-peligro:hover {
+  background: var(--error-texto);
+  color: #fff;
+}
+
+/* Mensajes */
+.aviso {
+  margin: 16px 0 0;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.aviso-ok {
+  background: var(--ok-fondo);
+  color: var(--ok-texto);
+}
+
+.aviso-error {
+  background: var(--error-fondo);
+  color: var(--error-texto);
+}
+
+/* Grilla de libros con CSS Grid: se acomoda sola según el ancho */
+.grilla {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.tarjeta {
+  display: flex;
+  flex-direction: column;
+  background: var(--papel);
+  border: 1px solid var(--borde);
+  border-left: 4px solid var(--acento);
+  border-radius: var(--radio);
+  padding: 16px;
+}
+
+.tarjeta h3 {
+  font-family: Georgia, serif;
+  font-size: 1.1rem;
+  margin: 6px 0;
+}
+
+.tarjeta p {
+  color: var(--tinta-suave);
+  margin: 0 0 14px;
+  flex-grow: 1; /* empuja el botón al fondo para que todas las tarjetas queden parejas */
+}
+
+.id {
+  font-size: 0.75rem;
+  color: var(--tinta-suave);
+}
+
+.vacio {
+  grid-column: 1 / -1;
+  color: var(--tinta-suave);
+  background: var(--papel);
+  border: 1px dashed var(--borde);
+  border-radius: var(--radio);
+  padding: 20px;
+  text-align: center;
+}
